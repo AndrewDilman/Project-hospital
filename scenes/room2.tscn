@@ -1,0 +1,203 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/bg 2.png" type="Texture" id=2]
+[ext_resource path="res://scripts/Click_obj.gd" type="Script" id=3]
+[ext_resource path="res://scenes/Click_obj.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/hand.png" type="Texture" id=5]
+
+[sub_resource type="QuadMesh" id=2]
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 74.0
+height = 456.0
+
+[sub_resource type="Animation" id=7]
+resource_name = "Anim"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Hide_Button"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 2.82276, 0.482 ),
+"update": 0,
+"values": [ Vector2( 0, -53 ), Vector2( 0, -2.38419e-07 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 2.82276, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -2.38419e-07 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Show_Button"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.482, 0.482 ),
+"update": 0,
+"values": [ Vector2( 0, -2.38419e-07 ), Vector2( 0, -53 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="room2" type="Node2D"]
+
+[node name="Bg2" type="Sprite" parent="."]
+scale = Vector2( 0.666667, 0.666667 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 286, 372 )
+
+[node name="Click_obj" type="Node2D" parent="."]
+position = Vector2( 429, 494 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Click_obj"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -2.38419e-07 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 5 )
+hframes = 5
+vframes = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Button" type="Button" parent="Click_obj/Sprite"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -157.0
+margin_top = -166.0
+margin_right = 171.0
+margin_bottom = 149.0
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Click_obj"]
+visible = false
+modulate = Color( 0.239216, 0.317647, 0.819608, 1 )
+scale = Vector2( 18, 18 )
+mesh = SubResource( 2 )
+
+[node name="Player_detect" type="Area2D" parent="Click_obj"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Click_obj/Player_detect"]
+position = Vector2( 13, 16 )
+shape = SubResource( 3 )
+
+[node name="Button_Anim" type="AnimationPlayer" parent="Click_obj"]
+anims/Anim = SubResource( 7 )
+anims/RESET = SubResource( 8 )
+
+[node name="ShowHide_Anim" type="AnimationPlayer" parent="Click_obj"]
+anims/Hide_Button = SubResource( 6 )
+anims/RESET = SubResource( 4 )
+anims/Show_Button = SubResource( 5 )
+
+[node name="Button" type="Sprite" parent="Click_obj"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Button2" type="Button" parent="Click_obj"]
+visible = false
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 11.0
+margin_bottom = 11.0
+
+[node name="Tween" type="Tween" parent="Click_obj"]
+
+[node name="Click_obj2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 185, 324 )
+
+[node name="Click_obj3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 889, 364 )
+
+[connection signal="body_entered" from="Click_obj/Player_detect" to="Click_obj" method="Body_entered"]
+[connection signal="body_exited" from="Click_obj/Player_detect" to="Click_obj" method="Body_exited"]
