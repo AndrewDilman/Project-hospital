@@ -1,8 +1,13 @@
 extends Node2D
 
 
+export var file : StreamTexture
+
+
 func _ready():
 	$Button_Anim.play("Anim")
+	
+	GLOBAL.sprite.texture=file
 
 func Body_entered(body):
 	if body.is_in_group("player"):
